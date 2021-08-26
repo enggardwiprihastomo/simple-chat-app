@@ -3,9 +3,6 @@ import { useHistory } from "react-router-dom"
 import { IoMdClose } from "react-icons/io"
 import { getInitials, IAccount } from "../../utils"
 import { chatContext } from "../../index"
-import { io } from "socket.io-client"
-
-const socket = io("http://localhost:8080")
 
 export default function Accounts() {
     const contextConsumer = useContext(chatContext)
@@ -26,10 +23,18 @@ export default function Accounts() {
         <ul className="accounts">
             {
                 contextConsumer.accounts.map((account, idx) => (
-                    <li key={`account-${idx}`} onClick={() => handleSelectAccount(account)}>
-                        <div className="profile" style={{ background: account.profile }}>{getInitials(account.name)}</div>
+                    <li
+                        key={`account-${idx}`}
+                        onClick={() => handleSelectAccount(account)}>
+                        <div
+                            className="profile"
+                            style={{ background: account.profile }}>
+                            {getInitials(account.name)}
+                        </div>
                         <span>{account.name}</span>
-                        <IoMdClose className="btn-close" onClick={() => handleDeleteAccount(account)} />
+                        <IoMdClose
+                            className="btn-close"
+                            onClick={() => handleDeleteAccount(account)} />
                     </li>
                 ))
             }

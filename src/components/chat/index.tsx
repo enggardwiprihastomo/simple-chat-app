@@ -20,6 +20,7 @@ export default function Chat() {
 
     useEffect(() => {
         socket.on("receive", (data: ISingleChat) => {
+            console.log(data)
             if (data.with === contextConsumer.login.name) {
                 contextConsumer.dispatchChat({
                     with: data.content.sender,
@@ -39,7 +40,9 @@ export default function Chat() {
 
     return (
         <div className="chat-room-container">
-            {displayContact ? <NewChat setDisplay={setDisplayContact} setSelectedChat={setSelectedChat} /> : null}
+            {displayContact ? <NewChat
+                setDisplay={setDisplayContact}
+                setSelectedChat={setSelectedChat} /> : null}
             <div className="contact-container">
                 <div className="title">
                     <img src="../../assets/ic-message.svg" alt="Messaging App" />
@@ -47,14 +50,31 @@ export default function Chat() {
                 </div>
                 <div className="action">
                     <div className="search">
-                        <input type="text" name="username" id="username" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search a name to start chat" />
-                        {search ? <IoMdClose className="btn-action" onClick={() => setSearch("")} /> : <IoMdSearch className="btn-action" />}
+                        <input
+                            type="text"
+                            name="username"
+                            id="username"
+                            value={search}
+                            onChange={e => setSearch(e.target.value)}
+                            placeholder="Search a name to start chat" />
+                        {search ?
+                            <IoMdClose
+                                className="btn-action"
+                                onClick={() => setSearch("")} /> :
+                            <IoMdSearch className="btn-action" />}
                     </div>
-                    <IoMdAdd className="btn-add" onClick={() => setDisplayContact(true)} />
+                    <IoMdAdd
+                        className="btn-add"
+                        onClick={() => setDisplayContact(true)} />
                 </div>
-                <ChatList selectedChat={selectedChat} setSelectedChat={setSelectedChat} search={search} />
+                <ChatList
+                    selectedChat={selectedChat}
+                    setSelectedChat={setSelectedChat}
+                    search={search} />
             </div>
-            {selectedChat ? <ChatContent selectedChat={selectedChat} setSelectedChat={setSelectedChat} /> : null}
+            {selectedChat ? <ChatContent
+                selectedChat={selectedChat}
+                setSelectedChat={setSelectedChat} /> : null}
         </div>
     )
 }

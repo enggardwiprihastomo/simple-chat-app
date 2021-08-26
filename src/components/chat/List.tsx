@@ -28,8 +28,13 @@ export default function ChatList({ search, selectedChat, setSelectedChat }: IPro
                     const lastMessage = chat.content[chat.content.length - 1]
                     const background = contextConsumer.accounts.find(account => account.name === chat.with).profile
                     return (
-                        <li key={`chat-${idx}`} onClick={() => setSelectedChat(chat.with)} className={selectedChat === chat.with ? "active-chat" : null}>
-                            <div className="profile" style={{ background }}>
+                        <li
+                            key={`chat-${idx}`}
+                            onClick={() => setSelectedChat(chat.with)}
+                            className={selectedChat === chat.with ? "active-chat" : null}>
+                            <div
+                                className="profile"
+                                style={{ background }}>
                                 {getInitials(chat.with)}
                             </div>
                             <div className="highlight">

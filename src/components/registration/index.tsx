@@ -47,7 +47,12 @@ export default function Register() {
                     <h3>Create Account</h3>
                     <label htmlFor="username">Username<span className="required-mobile">*</span></label>
                     <div className="username-wrapper">
-                        <input ref={usernameRef} type="text" name="username" id="username" value={username} onChange={handleUsernameChange} />
+                        <input
+                            ref={usernameRef}
+                            type="text"
+                            name="username"
+                            id="username"
+                            value={username} onChange={handleUsernameChange} />
                         <span className="required-info">!</span>
                     </div>
                     {errors ?
@@ -58,9 +63,7 @@ export default function Register() {
             </div>
             <div className="right">
                 <h3>Registered Accounts</h3>
-                <span className="register-info">
-                    Select one of the accounts to login with
-                </span>
+                <span className="register-info">Select one of the accounts to login with</span>
                 <Accounts />
             </div>
         </div>

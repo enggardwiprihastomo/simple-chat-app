@@ -15,7 +15,7 @@ const Main = () => {
     const dispatchChat = (newChat: ISingleChat) => {
 
         if (!isChatExist(newChat.with, chats)) {
-            setChats([...chats, {
+            return setChats([...chats, {
                 with: newChat.with,
                 content: [newChat.content]
             }])
@@ -30,7 +30,7 @@ const Main = () => {
                 }
                 return chat
             })
-            setChats(updatedChat)
+            return setChats(updatedChat)
         }
     }
 

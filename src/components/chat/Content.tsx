@@ -32,7 +32,7 @@ export default function ChatContent({ selectedChat, setSelectedChat }: IProps) {
                 }
             }
             contextConsumer.dispatchChat(newMessage)
-            socket.emit("send", newMessage)
+            socket.emit("send", newMessage, selectedChat)
             setMessage("")
         }
     }
@@ -42,8 +42,14 @@ export default function ChatContent({ selectedChat, setSelectedChat }: IProps) {
     return (
         <div className="chat-container">
             <div className="header">
-                <IoMdArrowBack className="btn-back" onClick={handleBack} />
-                <div className="profile" style={{ background: profile.profile }}>{getInitials(profile.name)}</div>
+                <IoMdArrowBack
+                    className="btn-back"
+                    onClick={handleBack} />
+                <div
+                    className="profile"
+                    style={{ background: profile.profile }}>
+                    {getInitials(profile.name)}
+                </div>
                 <span>{profile.name}</span>
             </div>
             <div className="messages">
@@ -72,8 +78,13 @@ export default function ChatContent({ selectedChat, setSelectedChat }: IProps) {
                 }
             </div>
             <div className="send">
-                <textarea placeholder="Write a message" onChange={e => setMessage(e.target.value)} value={message}></textarea>
-                <IoMdSend className="btn-send" onClick={handleSendMessage} />
+                <textarea
+                    placeholder="Write a message"
+                    onChange={e => setMessage(e.target.value)}
+                    value={message} />
+                <IoMdSend
+                    className="btn-send"
+                    onClick={handleSendMessage} />
             </div>
         </div>
     )

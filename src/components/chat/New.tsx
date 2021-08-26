@@ -41,13 +41,24 @@ export default function NewChat({ setDisplay, setSelectedChat }: IProps) {
     return (
         <div className={isBack ? "new-chat-container slide-out" : "new-chat-container slide-in"}>
             <div className="title">
-                <IoMdArrowBack className="btn-back" onClick={handleBack} />
+                <IoMdArrowBack
+                    className="btn-back"
+                    onClick={handleBack} />
                 <h3>New Chat</h3>
             </div>
             <div className="action">
                 <div className="search">
-                    <input type="text" name="username" id="username" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search a name to start chat" />
-                    {search ? <IoMdClose className="btn-action" onClick={() => setSearch("")} /> : <IoMdSearch className="btn-action" />}
+                    <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        value={search}
+                        onChange={e => setSearch(e.target.value)}
+                        placeholder="Search a name to start chat" />
+                    {search ? <IoMdClose
+                        className="btn-action"
+                        onClick={() => setSearch("")} /> :
+                        <IoMdSearch className="btn-action" />}
                 </div>
             </div>
             {contacts.length ?
@@ -56,8 +67,12 @@ export default function NewChat({ setDisplay, setSelectedChat }: IProps) {
                         contacts.map((account, idx) => {
                             if (account.name !== contextConsumer.login.name) {
                                 return (
-                                    <li key={`contact-${idx}`} onClick={() => handleSelectContact(account.name)}>
-                                        <div className="profile" style={{ background: account.profile }}>
+                                    <li
+                                        key={`contact-${idx}`}
+                                        onClick={() => handleSelectContact(account.name)}>
+                                        <div
+                                            className="profile"
+                                            style={{ background: account.profile }}>
                                             {getInitials(account.name)}
                                         </div>
                                         <span>{account.name}</span>
