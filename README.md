@@ -3,7 +3,7 @@ This is a simple chat app created with React. To communicate with other users in
 
 # Pre requisites
 1. Install all the dependencies using `npm install`
-2. Go to the server folder, and reeat the above step
+2. Go to the server folder, and repeat the above package installation for the server
 
 The server runs on port 8080, while the client runs on server 3000
 
