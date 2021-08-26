@@ -1,0 +1,230 @@
+@import "./index.scss";
+
+
+.no-account{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $gray;
+    flex: 1;
+}
+
+.register-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+
+    @include mobile{
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .left{
+        border-right: .1rem solid $border;
+        padding: 1rem 2rem;
+        width: 40rem;
+
+        @include mobile{
+            border: none;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+    
+
+        .title{
+            margin-bottom: 2rem;
+
+            img{
+                height: 2rem;
+                object-fit: cover;
+            }
+
+            h1{
+                margin-bottom: 1rem;
+            }
+
+            p{
+                color: $gray;
+            }
+        }
+
+        .form{
+
+            h3{
+                color: $maroon;
+            }
+
+            label{
+                color: $gray;
+            }
+
+            > *:not(:last-child){
+                margin-bottom: .5rem;
+            }
+            .username-wrapper{
+                display: flex;
+                align-items: center;
+                padding: .5rem;
+                border: .1rem solid $border;
+                border-radius: .5rem;
+                margin-top: .5rem;
+                
+
+                input{
+                    flex: 1;
+                    color: inherit;
+                    font-family: inherit;
+                }
+
+
+                span{
+                    width: 1.4rem;
+                    height: 1.4rem;
+                    background: $maroon;
+                    border-radius: .7rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 1rem;
+                    position: relative;
+                    cursor: pointer;
+                    user-select: none;
+                    color: $white;
+
+                    @include mobile{
+                        display: none;
+                    }
+
+                    
+                    &::before{
+                        display: none;
+                        content: "";
+                        position: absolute;
+                        bottom: 1.8rem;
+                        border-top: .6rem solid $maroon;
+                        border-left: .6rem solid transparent;
+                    }
+                    
+                    
+                    &::after{
+                        display: none;
+                        position: absolute;
+                        background: $maroon;
+                        padding: .4rem .8rem;
+                        border-radius: .4rem;
+                        content: "This field is required";
+                        width: max-content;
+                        transform-origin: right;
+                        right: 0;
+                        bottom: 2.4rem;
+                        
+                    }
+
+                    &:hover::before,
+                    &:hover::after{
+                        display: block;
+                    }
+                }
+            }
+
+            .required-mobile{
+                color: $maroon;
+                font-weight: 700;
+                display: none;
+
+                @include mobile{
+                    display: inline-block;
+                }
+            }
+
+            .errors{
+                color: $maroon;
+
+                li{
+                    padding: .5rem 0;
+                }
+            }
+
+            .btn-add{
+                @extend %btn-default;
+                margin-top: 1rem;
+                padding: .8rem 1rem;
+                float: right;
+                border-radius: .5rem;
+                background: $maroon;
+                color: $white;
+
+                @include mobile{
+                    width: 100%;
+                }
+            }
+        }
+    }
+    
+
+    .right{
+        width: 50rem;
+        overflow: auto;
+        padding: 1rem 2rem;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include mobile{
+            width: 100%;
+            flex: 1;
+        }
+
+        .register-info{
+            display: block;
+            color: $maroon;
+            border: .1rem solid $border;
+            padding: 1rem 2rem;
+            margin: 1rem;
+        }
+
+        .accounts{
+            min-width: 30rem;
+
+            li{
+                display: flex;
+                align-items: center;
+                margin: 1rem 0;
+                padding: 1rem 2rem;
+                cursor: pointer;
+
+                &:hover .btn-close{
+                    display: block;
+                }
+
+                .btn-close{
+                    display: none;
+
+                    @include mobile{
+                        display: block;
+                    }
+                }
+
+                .profile{
+                    height: 3rem;
+                    width: 3rem;
+                    border-radius: 1.5rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-right: 1rem;
+                    color: $white;
+                }
+
+                span{
+                    text-align: left;
+                    flex: 1;
+                }
+            }
+        }
+    }
+}
